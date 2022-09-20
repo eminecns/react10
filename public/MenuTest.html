@@ -1,0 +1,162 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="/assets/../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand" href="#">
+            <img src="/Content/img/Logo.png" width="105" height="48" class="d-inline-block align-top" alt="" />
+            <span class="block m-t-xs">
+                <strong class="font-bold center text-white">VİO</strong>
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse w-75 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Kontrol Paneli</a>
+                </li>
+                <li class="nav-item dropdown ml-lg-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        İhlal Yönetimi
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-warning" href="#">İhlalciler</a>
+                        <a class="dropdown-item text-warning" href="#">İhlaller</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Adres İşlemleri</a>
+                </li>
+
+                <li class="nav-item dropdown ml-lg-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tanımlar
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-warning" href="#">Kodlar</a>
+                        <a class="dropdown-item text-warning" href="#">Sistem Parametreleri</a>
+                        <a class="dropdown-item text-warning" href="#">İller</a>
+                        <a class="dropdown-item text-warning" href="#">Vergi Daireleri</a>
+                        <a class="dropdown-item text-warning" href="#">Vergi Dairesi Plaka</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown ml-lg-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Güvenlik
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-warning" href="#">Kullanıcılar</a>
+                        <a class="dropdown-item text-warning" href="#">Roller</a>
+                        <a class="dropdown-item text-warning" href="#">Yetkiler</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="navbar-collapse collapse w-25 ">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#"><i class="fa fa-user"></i>Yetkil Kullanıcı</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action(" ChangePassword","User")"><i class="fa fa-lock"></i>Şifremi Değiştir</a>
+                </li>
+                <li>
+                    <a href="#" onClick="Exit()"><i class="fa fa-sign-out fa-fw"></i>Çıkış Yap</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal fo</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ödeme Bilgileri</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Role" asp-action="Create" method="post">
+
+                        <select class="form-select" aria-label="Default select example" id="paymetStatus">
+                            <option selected value="0">Ödenmedi</option>
+                            <option value="1">Ödenmeyecek</option>
+                            <option value="2">Ödendi</option>
+                        </select>
+
+                        <div class="form-group" id="paidDiv">
+                            <label for="message-text" class="col-form-label">Ödeme Tipi</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected value="0">Posta Çeki</option>
+                                <option value="1">Banka Dekontu</option>
+                                <option value="2">Makbuz</option>
+                                <option value="3">Vergi Tahsil Alındısı</option>
+                            </select>
+                        </div> 
+
+                        <div  class="form-group" id="willNotBePaidDiv">
+                            <label for="message-text" class="col-form-label">Açıklama Parametresi:</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected value="0">Adres Yanlış</option>
+                                <option value="1">Araç Sahibi Değil</option>
+                                <option value="2">Görüntü Yok</option>
+                                <option value="3">Hatalı Plaka</option>
+                            </select>
+                            <label for="message-text" class="col-form-label">Açıklama</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../jquery/jquery.slim.min.js"></script>
+    <!--<script src="../popper.js/popper.min.js"></script>-->
+   
+
+</body>
+</html>
+ <script>
+     $("#paymetStatus").change(function () {
+        
+         if ($(this).val() == "1") {
+             $('#willNotBePaidDiv').show();
+         } else {
+             $('#willNotBePaidDiv').hide();
+         }
+
+         if ($(this).val() == "2") {
+             $('#paidDiv').show();
+         } else {
+             $('#paidDiv').hide();
+         }
+     });
+     $("#paymetStatus").trigger("change");
+ </script>
